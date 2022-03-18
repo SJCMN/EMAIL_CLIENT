@@ -9,6 +9,7 @@ export class InputComponent implements OnInit {
 
 @Input() label?: string ;
 @Input() control: any;
+@Input() inputType?: string; // 'password'
 
   constructor() { 
     
