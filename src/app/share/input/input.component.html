@@ -17,7 +17,7 @@
             {{ control.errors.maxlength.requiredLength}}
             characters
         </p>
-        <p *ngIF="control.errors.pattern">
+        <p *ngIf="control.errors.pattern">
             Invalid format
         </p>
         <p *ngIf="control.errors.nonUniqueUsername">
