@@ -32,7 +32,8 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   usernameAvailable(username: String) {
-    return this.http.post<UsernameAvailableResponse>(
+    return this.http
+    .post<UsernameAvailableResponse>(
       this.rootUrl + '/auth/username',
       {
         username,
@@ -61,7 +62,9 @@ export class AuthService {
   }
 
   signout() {
-    return this.http.post(this.rootUrl + '/auth/signout', {}).pipe(
+    return this.http
+    .post(this.rootUrl + '/auth/signout', {})
+    .pipe(
       tap(() => {
         this.signedin$.next(false);
       })
