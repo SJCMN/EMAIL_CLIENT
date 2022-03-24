@@ -18,8 +18,8 @@ interface SignupResponse {
 }
 
 interface SignedInResponse {
-  authenticated: boolean,
-  username: string,
+  authenticated: boolean;
+  username: string;
 }
 
 @Injectable({
@@ -58,5 +58,13 @@ export class AuthService {
           this.signedin$.next(authenticated);
         })
       );
+  }
+
+  signout() {
+    return this.http.post(this.rootUrl + '/auth/signout', {}).pipe(
+      tap(() => {
+        this.signedin$.next(false);
+      })
+    );
   }
 }
