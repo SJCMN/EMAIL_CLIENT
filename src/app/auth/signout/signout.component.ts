@@ -16,11 +16,8 @@ export class SignoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.signout().subscribe(() => {
-      // Navigate user back to signin page
+
     });
   }
 
-  signoutRedirect(){
-    this.router.navigateByUrl('/').then(() => console.log('Back to home'))
-  }
 }

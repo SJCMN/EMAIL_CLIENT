@@ -4,8 +4,6 @@ import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-
-
 interface UsernameAvailableResponse {
   available: boolean;
 }
@@ -32,12 +30,10 @@ export class AuthService {
   rootUrl = 'https://api.angular-email.com';
   signedin$ = new BehaviorSubject(false);
 
-
   constructor(private http: HttpClient, private router: Router) {}
 
   usernameAvailable(username: String) {
-    return this.http
-    .post<UsernameAvailableResponse>(
+    return this.http.post<UsernameAvailableResponse>(
       this.rootUrl + '/auth/username',
       {
         username,
@@ -66,10 +62,9 @@ export class AuthService {
   }
 
   signout() {
+    // Navigate user back to signin page
     this.router.navigateByUrl('');
-    return this.http
-    .post(this.rootUrl + '/auth/signout', {})
-    .pipe(
+    return this.http.post(this.rootUrl + '/auth/signout', {}).pipe(
       tap(() => {
         this.signedin$.next(false);
       })
