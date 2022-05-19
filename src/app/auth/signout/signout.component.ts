@@ -5,19 +5,14 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-signout',
   templateUrl: './signout.component.html',
-  styleUrls: ['./signout.component.css'],
+  styleUrls: ['./signout.component.css']
 })
 export class SignoutComponent implements OnInit {
-  
-  constructor(
-    private authService: AuthService, 
-    private router: Router
-    ) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.authService.signout().subscribe(() => {
-
+      this.router.navigateByUrl('/');
     });
   }
-
 }
